@@ -1,0 +1,25 @@
+{% extends "base.html" %} {% block title %}Klasifikasi Tumor Otak{% endblock %}
+{% block content %}
+<h2>Klasifikasi Tumor Otak</h2>
+<div class="form-section">
+  <form method="post" enctype="multipart/form-data">
+    <label>Pilih gambar MRI untuk diklasifikasi:</label><br />
+    <input type="file" name="image" accept="image/*" required /><br />
+    <input type="submit" value="Klasifikasi" />
+  </form>
+</div>
+{% if prediction %}
+<div class="result-section">
+  <h4>Hasil Prediksi: {{ prediction }}</h4>
+  {% if gradcam_path %}
+  <img
+    src="{{ url_for('static', filename=gradcam_path) }}"
+    class="result-img"
+    alt="GradCAM"
+  />
+  {% endif %} {% if explanation %}
+  <h5>Penjelasan GradCAM:</h5>
+  <p>{{ explanation }}</p>
+  {% endif %}
+</div>
+{% endif %} {% endblock %}
