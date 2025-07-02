@@ -8,6 +8,14 @@
     <button type="submit">Segmentasi</button>
   </form>
 </div>
+<div id="loading" style="display: none; text-align: center; margin: 20px 0">
+  <img
+    src="{{ url_for('static', filename='assets/load.gif') }}"
+    alt="Loading..."
+    width="60"
+  />
+  <p>Memproses segmentasi, mohon tunggu...</p>
+</div>
 {% if segmented_path %}
 <div class="result-section">
   <h4>Hasil Segmentasi:</h4>
@@ -21,4 +29,12 @@
   <p style="white-space: pre-line">{{ segmentation_info }}</p>
   {% endif %}
 </div>
-{% endif %} {% endblock %}
+{% endif %}
+<script>
+  const form = document.querySelector(".classify-form");
+  const loading = document.getElementById("loading");
+  form.addEventListener("submit", function () {
+    loading.style.display = "block";
+  });
+</script>
+{% endblock %}
