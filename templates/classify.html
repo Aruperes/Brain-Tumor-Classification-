@@ -1,11 +1,20 @@
 {% extends "base.html" %} {% block title %}Klasifikasi Tumor Otak{% endblock %}
 {% block content %}
-<h2>Klasifikasi Tumor Otak</h2>
-<div class="form-section">
-  <form method="post" enctype="multipart/form-data">
-    <label>Pilih gambar MRI untuk diklasifikasi:</label><br />
-    <input type="file" name="image" accept="image/*" required /><br />
-    <input type="submit" value="Klasifikasi" />
+<div class="classify-container">
+  <h2>Klasifikasi Tumor Otak</h2>
+  <form method="post" enctype="multipart/form-data" class="classify-form">
+    <label for="image">Pilih gambar MRI untuk klasifikasi:</label>
+    <input type="file" name="image" id="image" accept="image/*" required />
+
+    <label for="model_choice">Pilih Model:</label>
+    <select name="model_choice" id="model_choice" required>
+      <option value="resnet">ResNet</option>
+      <option value="vgg">VGG</option>
+      <option value="densenet">DenseNet</option>
+      <option value="efficientnet">EfficientNet</option>
+    </select>
+
+    <button type="submit">Klasifikasi</button>
   </form>
 </div>
 {% if prediction %}

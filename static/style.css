@@ -132,6 +132,17 @@ footer {
   box-shadow: 0 -2px 8px rgba(96, 125, 139, 0.04);
 }
 
+.result-img {
+  width: 240px;
+  height: 240px;
+  object-fit: contain;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 2px 12px rgba(96, 125, 139, 0.08);
+  display: block;
+  margin: 0 auto 18px auto;
+}
+
 @media (max-width: 700px) {
   .container {
     padding: 18px 6px;
@@ -459,4 +470,54 @@ footer {
     max-width: 100%;
     height: auto;
   }
+}
+
+/* Tambahkan di style.css */
+.classify-container {
+  max-width: 400px;
+  margin: 40px auto;
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 4px 24px rgba(96, 125, 139, 0.07);
+  padding: 32px 28px 28px 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.classify-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.classify-form label {
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+
+.classify-form input[type="file"],
+.classify-form select {
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid #b0bec5;
+  font-size: 1rem;
+}
+
+.classify-form button {
+  background: #1976d2;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background 0.2s;
+}
+
+.classify-form button:hover {
+  background: #1565c0;
 }

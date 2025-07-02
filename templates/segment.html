@@ -1,11 +1,11 @@
 {% extends "base.html" %} {% block title %}Segmentasi Tumor Otak{% endblock %}
 {% block content %}
-<h2>Segmentasi Tumor Otak</h2>
-<div class="form-section">
-  <form method="post" enctype="multipart/form-data">
-    <label>Pilih gambar MRI untuk segmentasi:</label><br />
-    <input type="file" name="image" accept="image/*" required /><br />
-    <input type="submit" value="Segmentasi" />
+<div class="classify-container">
+  <h2>Segmentasi Tumor Otak</h2>
+  <form method="post" enctype="multipart/form-data" class="classify-form">
+    <label for="image">Pilih gambar MRI untuk segmentasi:</label>
+    <input type="file" name="image" id="image" accept="image/*" required />
+    <button type="submit">Segmentasi</button>
   </form>
 </div>
 {% if segmented_path %}
@@ -18,7 +18,7 @@
   />
   {% if segmentation_info %}
   <h5>Keterangan Segmentasi:</h5>
-  <p>{{ segmentation_info }}</p>
+  <p style="white-space: pre-line">{{ segmentation_info }}</p>
   {% endif %}
 </div>
 {% endif %} {% endblock %}
