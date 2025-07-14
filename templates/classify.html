@@ -22,7 +22,7 @@
   <h4>Hasil Prediksi: {{ prediction }}</h4>
   {% if gradcam_path %}
   <img
-    src="{{ url_for('static', filename=gradcam_path) }}"
+    src="{{ url_for('static', filename=gradcam_filename) }}"
     class="result-img"
     alt="GradCAM"
   />
