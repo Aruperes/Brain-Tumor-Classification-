@@ -2,27 +2,40 @@
 {% block content %}
 <div class="classify-container">
   <h2>Klasifikasi Tumor Otak</h2>
-  <form method="post" enctype="multipart/form-data" class="classify-form">
+  <form
+    method="post"
+    enctype="multipart/form-data"
+    class="classify-form"
+    id="classifyForm"
+  >
     <label for="image">Pilih gambar MRI untuk klasifikasi:</label>
     <input type="file" name="image" id="image" accept="image/*" required />
 
     <label for="model_choice">Pilih Model:</label>
-    <select name="model_choice" id="model_choice" required>
+    <select name="model" id="model_choice" required>
+      <option value="efficientnet">EfficientNet</option>
       <option value="resnet">ResNet</option>
       <option value="vgg">VGG</option>
       <option value="densenet">DenseNet</option>
-      <option value="efficientnet">EfficientNet</option>
     </select>
 
     <button type="submit">Klasifikasi</button>
   </form>
+</div>
+<div id="loading" style="display: none; text-align: center; margin: 20px 0">
+  <img
+    src="{{ url_for('static', filename='assets/load.gif') }}"
+    alt="Loading..."
+    width="60"
+  />
+  <p>Memproses, mohon tunggu...</p>
 </div>
 {% if prediction %}
 <div class="result-section">
   <h4>Hasil Prediksi: {{ prediction }}</h4>
   {% if gradcam_path %}
   <img
-    src="{{ url_for('static', filename=gradcam_filename) }}"
+    src="{{ url_for('static', filename=gradcam_path) }}"
     class="result-img"
     alt="GradCAM"
   />
@@ -31,4 +44,12 @@
   <p>{{ explanation }}</p>
   {% endif %}
 </div>
-{% endif %} {% endblock %}
+{% endif %}
+<script>
+  const form = document.querySelector(".classify-form");
+  const loading = document.getElementById("loading");
+  form.addEventListener("submit", function () {
+    loading.style.display = "block";
+  });
+</script>
+{% endblock %}
